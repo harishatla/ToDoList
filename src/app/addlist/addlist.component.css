@@ -1,0 +1,18 @@
+/* .container{
+    display: flex;
+    height: 500px;
+    justify-content: center;
+     
+    
+} */
+header{
+    background-color: yellow;
+}
+.show-tasks ul li{
+    text-align: center;
+    background-color: yellow;
+}
+.tasks{
+    background-color: rgb(184, 172, 172);
+     
+}

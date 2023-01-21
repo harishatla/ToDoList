@@ -1,0 +1,66 @@
+<div class="container-fluid">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <div class="card mt-4" style="height: 700px;width: 600px;">
+                    <div class="card-body" >
+                        <header>
+                            <h4 style="text-align: center;">To Do List</h4>
+                        </header>
+                        <form [formGroup]="newTasks" (ngSubmit)="addTask(newTasks)">
+                            <div class="form-group" style="text-align: center;">
+                                <input type="text" placeholder="Add Task" class="form-control" formControlName="task" required>
+                            </div>
+                            <div class="form-froup mt-2" style="text-align: center;">
+                                <input type="date" class="form-control" formControlName="date" required>
+                                <button type="submit" class="btn btn-success mt-3">ADD</button>
+                            </div>
+                        </form>
+                        <div class="col-md-12 mt-3" style="margin-left: 30px;">
+                                <form (ngSubmit)="customtasks()">
+                                    <label>Get Custom Tasks: </label>
+                                    <input type="date" [(ngModel)]="customDate" name="date">
+                                     <input type="submit">
+                                </form>
+                        </div>
+                        <div class="show-tasks mt-4 " style="margin: 30px;">
+                            <div class=" flex row" *ngFor="let task of toDolist;index as i">
+                                <div class="col-md-6 tasks mt-2 ">
+                                    <p>{{task.task}}</p> 
+                                </div>
+                                <div class="col-md-6 ">
+                                    <button class="btn btn-success" (click)="taskDone(task)" style="margin: 5px;">Done</button>
+                                    <button class="btn btn-danger" (click)="deleteTask(task)" style="margin: 5px;">Delete</button>
+                                    <button class="btn btn-success" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="call(task)" style="margin: 5px;">edit</button>
+                                </div>
+                            </div>
+  
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Edit Task</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-froup mt-2" style="text-align: center;">
+                                        <input type="text" class="form-control"  [(ngModel)]='taskUpdateValue'>
+                                        <button class="btn btn-success" type="submit" (click)="editTask()" data-bs-dismiss="modal">Update</button>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>  
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+</div>
+
+ 
